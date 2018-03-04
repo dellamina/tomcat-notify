@@ -1,0 +1,27 @@
+{
+    "name": "@dellamina/tomcat-notify",
+    "version": "1.0.1",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "modclean": "modclean"
+    },
+    "bin": {
+        "tomcat-notify": "./index.js"
+    },
+    "author": "Mattia Della Mina",
+    "license": "MIT",
+    "dependencies": {
+        "commander": "^2.14.1",
+        "configstore": "^3.1.1",
+        "inquirer": "^5.1.0",
+        "inquirer-select-directory": "^1.2.0",
+        "node-notifier": "^5.2.1",
+        "node-pty": "^0.7.4",
+        "terminal-kit": "^1.14.3"
+    },
+    "devDependencies": {
+        "modclean": "^2.1.2"
+    }
+}
