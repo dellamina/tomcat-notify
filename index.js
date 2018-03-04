@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 /**
- * shebang line for nix systems, npm will take care of making it work on windown
+ * shebang line for nix systems, npm will take care of making it work on windows
  */
 
 const Operation = require('./src/Operation');
 const program = require('commander');
 
-program.version('1.0.1', '-v, --version')
+program.version('1.0.2', '-v, --version');
 
 program
     .command('run')

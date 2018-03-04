@@ -43,7 +43,7 @@ module.exports = {
     /**
      * Metoddo inquirer per mostrare un confirm
      */
-    askConfirm: (msg = 'Sicuro?') => {
+    askConfirm: (msg = 'You sure?') => {
         return inquirer.prompt([
             {
                 type: 'confirm',

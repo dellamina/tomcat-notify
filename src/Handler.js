@@ -36,7 +36,7 @@ onLog = (data, idx, key) => {
 
 /** Handler per messaggi di ERRORE */
 onOther = (data, idx, key) => {
-    TerminalUtil.red('begin::ERROR\r\n', data, 'end::ERROR\r\n');
+    TerminalUtil.red('begin::ERROR\r\n' + data + 'end::ERROR\r\n');
 };
 
 module.exports = {

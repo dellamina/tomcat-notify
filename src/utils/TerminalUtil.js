@@ -7,27 +7,28 @@ var maybeNewLine = (args) => {
     if(!inLine)
         term(newLine);
     inLine = false;
+    return TerminalUtil;
 };
 
 TerminalUtil = {
     green: (...args) => {
         term.green(args);
-        maybeNewLine();
+        return maybeNewLine();
     },
 
     cyan: (...args) => {
         term.cyan(args);
-        maybeNewLine();
+        return maybeNewLine();
     },
 
     red: (...args) => {
         term.red(args);
-        maybeNewLine();
+        return maybeNewLine();
     },
 
     blue: (...args) => {
         term.blue(args);
-        maybeNewLine();
+        return maybeNewLine();
     },
 
     /**

@@ -45,8 +45,7 @@ module.exports = {
 
         TerminalUtil.green('Tomcats available:');
         ConfigstoreUtil.listTomcat().forEach(function (item) {
-            TerminalUtil.inline().red(item.name);
-            TerminalUtil.cyan([' => ' + item.path]);
+            TerminalUtil.inline().red(item.name).cyan([' => ' + item.path]);
         });
         return;
     }

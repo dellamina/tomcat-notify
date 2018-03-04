@@ -1,12 +1,14 @@
 # tomcat-notify
-This is a simple package to reduce general Tomcat output, and take action based on some rules `./src/Rules.js`, from color logging in console to desktop notification.
+This is a simple package to reduce general Tomcat output to only what metters for you.
 
-All your configurations are stored in the config file `./config/@dellamina/tomcat-notify/config.json` .
+Its behavior is based on some rules `./src/Rules.js`, from color logging in console to desktop notification.
+
+All your configurations are stored in the config file `~/config/configstore/@dellamina/tomcat-notify/config.json` .
 
 ### Installation
-You can install this package with `npm install -g` and then you can run `tomcat-notify` from everywhere on your pc or you can symply use `node index.js` from the installation directory.
+You can install this package with `npm install -g` and then you can run `tomcat-notify` from everywhere on your pc or you can simply use `node index.js` from the installation directory.
 
-To remove it symplu run `npm uninstall -g @dellamina/tomcat-notify` .
+To remove just run `npm uninstall -g @dellamina/tomcat-notify` .
 
 
 ### Usage 
