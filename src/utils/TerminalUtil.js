@@ -31,6 +31,11 @@ TerminalUtil = {
         return maybeNewLine();
     },
 
+    log: (...args) => {
+        term(args);
+        return maybeNewLine();
+    },
+
     /**
      * Metodo per disattivare il newLine sulla chiamata successiva
      */

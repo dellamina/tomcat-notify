@@ -7,7 +7,7 @@
 const Operation = require('./src/Operation');
 const program = require('commander');
 
-program.version('1.0.2', '-v, --version');
+program.version('1.1.0', '-v, --version');
 
 program
     .command('run')

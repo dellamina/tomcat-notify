@@ -9,7 +9,7 @@ module.exports = {
     getProcess: () => {
         return pty.spawn(shell, [], {
             name: 'xterm-color',
-            cols: 80,
+            cols: 500,
             rows: 30,
             cwd: process.env.HOME,
             env: process.env

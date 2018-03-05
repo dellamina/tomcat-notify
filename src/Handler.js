@@ -6,38 +6,47 @@ var isPostStartup = false;
 /**
  * Metodo che si occupa di andare a controllare eventuali match tra chunk e rules e agire di conseguenza
  */
-data = (data) => {
-    var rules = require('./Rules');
-    rules.forEach(key => {
-        let idx = data.indexOf(key.check);
-        if (idx > -1) {
-            if (key.lavel == 'ALERT' || (key.lavel == 'ALERTPOST' && isPostStartup))
-                return onAlert(data, idx, key);
-            if (key.lavel == 'LOG' || key.lavel == 'ALERTPOST')
-                return onLog(data, idx, key);
-            else
-                return onOther(data, idx, key);
-        }
+var logAll = false;
+var rules = require('./Rules');
+data = (line) => {
+    var items = line.split("\n");
+    items.forEach(data => {
+        if (logAll) console.log(data);
+        rules.forEach(key => {
+            let idx = data.indexOf(key.check);
+            if (idx > -1) {
+                if (key.lavel == 'ALERT' || (key.lavel == 'ALERTPOST' && isPostStartup))
+                    return onAlert(data, idx, key);
+                if (key.lavel == 'LOG' || key.lavel == 'ALERTPOST')
+                    return onLog(data, idx, key);
+                else
+                    return onOther(data, idx, key);
+            }
+        });
     });
 };
 
 /** Handler per messaggio ALERT */
 onAlert = (data, idx, key) => {
     isPostStartup = true;
-    let msg = key.parse(key, data, idx);
-    TerminalUtil.green(msg);
+    let msg = parse(data, idx, key);
+    if (!logAll) TerminalUtil.green(msg);
     NotifyUtil.default(msg);
 };
 
 /** Hangled per messaggio LOG */
 onLog = (data, idx, key) => {
-    TerminalUtil.blue(key.parse(key, data, idx))
+    if (!logAll) TerminalUtil.log(parse(data, idx, key));
 };
 
 /** Handler per messaggi di ERRORE */
 onOther = (data, idx, key) => {
-    TerminalUtil.red('begin::ERROR\r\n' + data + 'end::ERROR\r\n');
+    if (!logAll) TerminalUtil.red('begin::ERROR\r\n' + data + 'end::ERROR\r\n');
 };
+
+parse = (data, idx, key) => {
+    return data.substring(idx + key.check.length).trim();
+}
 
 module.exports = {
     /**

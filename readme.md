@@ -1,5 +1,5 @@
 # tomcat-notify
-This is a simple package to reduce general Tomcat output to only what metters for you.
+This is a simple package to reduce general Tomcat output to only what you care about.
 
 Its behavior is based on some rules `./src/Rules.js`, from color logging in console to desktop notification.
 
@@ -14,16 +14,16 @@ To remove just run `npm uninstall -g @dellamina/tomcat-notify` .
 ### Usage 
 
 ```
-  Usage: index [options] [command]
+Usage: index [options] [command]
 
 
-  Options:
+Options:
 
     -v, --version  output the version number
     -h, --help     output usage information
 
 
-  Commands:
+Commands:
 
     add   Configure a new tomcat.
     rm    Remove an available tomcat.
