@@ -1,5 +1,6 @@
 const notifier = require('node-notifier');
 const path = require('path');
+const stripAnsi = require('strip-ansi');
 
 module.exports = {
     /**
@@ -8,7 +9,7 @@ module.exports = {
     default: (msg) => {
         notifier.notify({
             title: 'Tomcat Notify',
-            message: msg,
+            message: stripAnsi(msg),
             icon: path.join(__dirname, '..', 'imgs', 'Tomcat.png')
         });
     }

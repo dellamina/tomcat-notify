@@ -7,11 +7,12 @@
 const Operation = require('./src/Operation');
 const program = require('commander');
 
-program.version('1.1.2', '-v, --version');
+program.version('1.2.0', '-v, --version');
 
 program
     .command('run')
     .description('Run a specific tomcat.')
+    .option('-l, --log [boolean]', 'Log complete output.')
     .action(Operation.run);
 
 program
@@ -30,9 +31,9 @@ program
     .action(Operation.list);
 
 program
-    .command('*')
-    .description('Catch all.')
-    .action(() =>  program.help());
+    .command('open')
+    .description('Open tomcat folder in file explorer.')
+    .action(Operation.open);
 
 program.parse(process.argv);
 

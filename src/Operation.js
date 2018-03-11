@@ -1,3 +1,5 @@
+const opn = require('opn');
+
 const InquirerUtil = require('./utils/InquirerUtil');
 const ConfigstoreUtil = require('./utils/ConfigstoreUtil');
 const TerminalUtil = require('./utils/TerminalUtil');
@@ -6,12 +8,12 @@ const PtyUtil = require('./utils/PtyUtil');
 const Handler = require('./Handler');
 
 module.exports = {
-    run: async () => {
+    run: async (options) => {
         if (!ConfigstoreUtil.hasTomcat())
             return TerminalUtil.red('There are no tomcat configured!');
 
         var answers = await InquirerUtil.askWhichTomcat();
-        Handler.process(PtyUtil.getProcess(), ConfigstoreUtil.getTomcatByName(answers.name));
+        Handler.process(PtyUtil.getProcess(), ConfigstoreUtil.getTomcatByName(answers.name), options);
     },
 
     add: async () => {
@@ -48,5 +50,14 @@ module.exports = {
             TerminalUtil.inline().red(item.name).cyan([' => ' + item.path]);
         });
         return;
+    },
+
+    open: async () => {
+        if (!ConfigstoreUtil.hasTomcat())
+            return TerminalUtil.red('There are no tomcat configured!');
+
+        var answers = await InquirerUtil.askWhichTomcat();
+        var tomcat = ConfigstoreUtil.getTomcatByName(answers.name);
+        return opn(tomcat.path);
     }
 };

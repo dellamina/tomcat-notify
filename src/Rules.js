@@ -1,5 +1,5 @@
 /**
- * Array di regole usate nel filstrare i messaggi del Tomcat
+ * Array di regole usate nel filtrare i messaggi del Tomcat
  *
  * ```
  * check: viene controllato l'indexOf sul chunk di risposta, se > di -1
@@ -12,18 +12,23 @@
 module.exports = [
     {
         check: 'org.apache.catalina.startup.Catalina.start',
-        lavel: 'ALERT'
+        log: true,
+        alert: true
     },
     {
         check: 'org.apache.catalina.startup.HostConfig.deployDirectory',
-        lavel: 'LOG'
+        log: 'green'
     },
     {
         check: 'org.apache.catalina.startup.HostConfig.deployWAR',
-        lavel: 'ALERTPOST'
+        log: 'green',
+        alert: 'finished',
+        postStartup: true
     },
     {
         check: 'org.apache.catalina.core.StandardContext.reload',
-        lavel: 'ALERTPOST'
+        log: 'green',
+        alert: 'finished',
+        postStartup: true
     }
 ];
