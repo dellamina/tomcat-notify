@@ -8,6 +8,7 @@ var isPostStartup = false;
  */
 var logAll = false;
 var rules = require('./Rules');
+var tomcatConfig;
 data = (line) => {
     var items = line.split("\n");
     items.forEach(data => {
@@ -45,14 +46,16 @@ onOther = (data, idx, key) => {
 };
 
 parse = (data, idx, key) => {
-    return data.substring(idx + key.check.length).trim();
+    return data.replace(tomcatConfig.path, tomcatConfig.name).substring(idx + key.check.length).trim();
 }
+
 
 module.exports = {
     /**
      * Metodo principale che registra un listener per andare a leggere l'output del processo che viene lanciato direttamente all'interno del metodo stesso
      */
     process: (ptyProcess, tomcat) => {
+        tomcatConfig = tomcat;
         ptyProcess.on('data', data);
 
         TerminalUtil.green('Starting tomcat: ' + tomcat.name);

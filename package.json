@@ -1,7 +1,9 @@
 {
+    "author": "Mattia Della Mina",
     "name": "@dellamina/tomcat-notify",
-    "version": "1.1.0",
-    "description": "",
+    "version": "1.1.2",
+    "license": "MIT",
+    "description": "Reduce general Tomcat output to only what you care about",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,8 +12,6 @@
     "bin": {
         "tomcat-notify": "./index.js"
     },
-    "author": "Mattia Della Mina",
-    "license": "MIT",
     "dependencies": {
         "commander": "^2.14.1",
         "configstore": "^3.1.1",
