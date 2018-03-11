@@ -25,9 +25,9 @@ Options:
 
 Commands:
 
-    add   Configure a new tomcat.
-    rm    Remove an available tomcat.
-    list  List all available tomcat.
-    run   Run a specific tomcat.
-    *     Catch all.
+    run [options]  Run a specific tomcat.
+    add            Configure a new tomcat.
+    rm             Remove an available tomcat.
+    list           List all available tomcat.
+    open           Open tomcat folder in file explorer.
 ```
