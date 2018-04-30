@@ -60,6 +60,13 @@ module.exports = {
     },
 
     /**
+     * Metodo per andare a controllare quante conf salvate ci sono
+     */
+    countTomcat: () => {
+        return (conf.has(TOMCAT_CONFIG_KEY) && conf.get(TOMCAT_CONFIG_KEY) !== undefined) ? conf.get(TOMCAT_CONFIG_KEY).length : 0;
+    },
+
+    /**
      * Metodo per andare a leggere le conf salvate
      */
     listTomcat: () => {

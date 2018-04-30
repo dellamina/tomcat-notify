@@ -9,11 +9,19 @@ const Handler = require('./Handler');
 
 module.exports = {
     run: async (options) => {
-        if (!ConfigstoreUtil.hasTomcat())
+        let count = ConfigstoreUtil.countTomcat();
+        if (count <= 0)
             return TerminalUtil.red('There are no tomcat configured!');
 
-        var answers = await InquirerUtil.askWhichTomcat();
-        Handler.process(PtyUtil.getProcess(), ConfigstoreUtil.getTomcatByName(answers.name), options);
+        let tomcat;
+        if (count > 1) {
+            let answers = await InquirerUtil.askWhichTomcat();
+            tomcat = ConfigstoreUtil.getTomcatByName(answers.name);
+        }
+        else {
+            tomcat = ConfigstoreUtil.listTomcat()[0];
+        }
+        Handler.process(PtyUtil.getProcess(), tomcat, options);
     },
 
     add: async () => {
@@ -53,11 +61,18 @@ module.exports = {
     },
 
     open: async () => {
-        if (!ConfigstoreUtil.hasTomcat())
+        let count = ConfigstoreUtil.countTomcat();
+        if (count <= 0)
             return TerminalUtil.red('There are no tomcat configured!');
 
-        var answers = await InquirerUtil.askWhichTomcat();
-        var tomcat = ConfigstoreUtil.getTomcatByName(answers.name);
+        let tomcat;
+        if (count > 1) {
+            let answers = await InquirerUtil.askWhichTomcat();
+            tomcat = ConfigstoreUtil.getTomcatByName(answers.name);
+        }
+        else {
+            tomcat = ConfigstoreUtil.listTomcat()[0];
+        }
         return opn(tomcat.path);
     }
 };

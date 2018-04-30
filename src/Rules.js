@@ -11,6 +11,10 @@
  */
 module.exports = [
     {
+        check: 'TN::',
+        log: true
+    },
+    {
         check: 'org.apache.catalina.startup.Catalina.start',
         log: true,
         alert: true
@@ -22,13 +26,13 @@ module.exports = [
     {
         check: 'org.apache.catalina.startup.HostConfig.deployWAR',
         log: 'green',
-        alert: 'finished',
+        alert: ['finished', 'completed'],
         postStartup: true
     },
     {
         check: 'org.apache.catalina.core.StandardContext.reload',
         log: 'green',
-        alert: 'finished',
+        alert: ['finished', 'completed'],
         postStartup: true
     }
 ];

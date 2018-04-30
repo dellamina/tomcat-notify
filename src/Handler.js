@@ -35,6 +35,9 @@ onAlert = (data, idx, key) => {
     if(typeof key.alert === 'string' && data.indexOf(key.alert) == -1) {
         return;
     }
+    if(Array.isArray(key.alert) && !key.alert.some((v) => data.indexOf(v) >= 0 )) {
+        return;
+    }
     NotifyUtil.default(msg);
 }
 
@@ -47,7 +50,7 @@ onLog = (data, idx, key) => {
 }
 
 parse = (data, idx, key) => {
-    return data.replace(tomcatConfig.path,'').replace(/.{1}webapp.{1}/, '~>').substring(idx + key.check.length).trim();
+    return data.replace(tomcatConfig.path,'').replace(/\/.{1}webapp.{1}\//, '~>').substring(idx + key.check.length).trim();
 }
 
 
