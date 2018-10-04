@@ -6,8 +6,9 @@
 
 const Operation = require('./src/Operation');
 const program = require('commander');
+const pkg = require('./package.json');
 
-program.version('1.3.0', '-v, --version');
+program.version(pkg.version, '-v, --version');
 
 program
     .command('run')
