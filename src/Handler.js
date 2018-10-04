@@ -50,7 +50,7 @@ onLog = (data, idx, key) => {
 }
 
 parse = (data, idx, key) => {
-    return data.replace(tomcatConfig.path,'').replace(/\/.{1}webapp.{1}\//, '~>').substring(idx + key.check.length).trim();
+    return data.replace(tomcatConfig.path,'').replace(/.{1}webapp.{1}/, '~>').substring(idx + key.check.length).trim();
 }
 
 
